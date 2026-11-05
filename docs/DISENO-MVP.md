@@ -8,8 +8,8 @@ Fork de [debs-obrien/alexa-grok-bot-skill](https://github.com/debs-obrien/alexa-
 
 - Skill de Alexa en **Development**. Invocación: **Chief**.
 - Este Cloudflare Worker.
-- Rutinas con webhook en Chief, Lingxis y Commie.
-- TTS con Voice Monkey.
+- Rutinas con webhook (aviso automático por internet) en Chief, Lingxis y Commie.
+- Voz en alto (TTS) con Voice Monkey: Alexa lee el resultado en voz alta.
 
 ## Frases de lanzamiento (Amazon)
 
@@ -20,7 +20,7 @@ No usar «despierta»: Amazon no la ofrece como frase de lanzamiento.
 ## Ejemplos
 
 - «Alexa, dile a Chief qué hay para hoy» → Chief
-- «Alexa, pregunta a Chief que Lingxis: qué hay para mergear» → Lingxis
+- «Alexa, pregunta a Chief que Lingxis: qué hay listo para revisar» → Lingxis
 - «Alexa, dile a Chief que Commie: resumen del radar» → Commie
 
 ## Enrutado
@@ -38,9 +38,9 @@ Mapa bot → secretos del webhook. Los secretos no van al repositorio.
 
 Acuse: `Listo, <Bot> ya está en eso.`
 
-TTS del resultado: el texto completo si es corto; si no, un resumen. El detalle queda en el chat del bot.
+Lo que oyes: el texto completo si es corto; si no, un resumen. El detalle queda en el chat del bot.
 
-Temas sensibles (salud, dinero, familia, RR. HH.): solo chat, sin TTS.
+Temas sensibles (salud, dinero, familia, RR. HH.): solo chat, sin voz en alto.
 
 Sin horas de silencio.
 
@@ -56,5 +56,6 @@ Sin horas de silencio.
 1. Webhooks en los tres bots.
 2. Secretos del Worker.
 3. Modelo de interacción.
-4. Deploy.
-5. Prueba.
+4. Publicar el Worker en Cloudflare.
+5. Prueba en el Echo: «Alexa, dile a Chief qué hay para hoy».
+   Deberías oír: «Listo, Chief ya está en eso.» y luego el resumen en voz (o solo el acuse si el tema es sensible).
